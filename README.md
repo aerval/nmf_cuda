@@ -7,7 +7,7 @@ This repository implements a number of Non-negative matrix facotrization (NMF) a
 
 ### Dependencies
 
-The project is designed so that only some of the used libries need to be installed. You can either run the solver on any normal CPU via numpy, or on CUDA capable GPUs via cudamat or PyCUDA and skcuda.
+The project is designed so that only some of the used libries need to be installed. You can either run the solver on any normal CPU via numpy, or on CUDA capable GPUs via cudamat or PyCUDA and skcuda. Note that the latter does not support all matrix factorization. Performance is skcuda > cudamat > numpy, the latter especially depending on the used numpy BLAS lib.
 
 ### Solver
 

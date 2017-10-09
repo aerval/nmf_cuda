@@ -9,7 +9,7 @@ if __name__ == "__main__":
     
     t0 = time.time()
     
-    print "NMF-DKFZ - a variety of update rule NMF algorithms"
+    print "NMF-CUDA - a variety of update rule NMF algorithms"
     
     parser = argparse.ArgumentParser(description='A python script for running NMF on CUDA (or numpy)',
                                      epilog='Dependencies: numpy, cudamat and/or pycuda & skcuda',
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     parser.add_argument("-r", "-R", dest="type", default="N", type=str,
                         help="Type of NMF, P for sparse, A for affine, S for semi and C for convex else normal NMF")
     parser.add_argument("-l", "-L", dest="lib", default="n", type=str,
-                        help="base library, either just numpy, P for skcuda, C for cudamat")
+                        help="Base library, either just numpy, P for skcuda, C for cudamat. Skcuda does not support all algorithms.")
     parser.add_argument("-s", "-S", dest="save", default=None, type=str,
                         help="save file name, uses input name if None")
     parser.add_argument("-sh", "-sH", dest="sparseH", default=0, type=float,
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     parser.add_argument("-g", "-G", dest="gpuID", default=0, type=int,
                         help="ID of the GPU, if multiple GPUs are available")
     parser.add_argument("-e", "-E", dest="encoding", default="txt",
-                        help="File encoding of input and output matrices")
+                        help="File encoding of input and output matrices. Available options are numpy matrix format (.npy) and tab-delimitered text (.txt)")
     
     args = parser.parse_args()
     
@@ -137,5 +137,5 @@ if __name__ == "__main__":
         raise Exception("The chosen NMF algorithm is not implemented in the chosen library")
     
     t1 = time.time()
-    print "Time taken by NMF-DKFZ: ", t1-t0
+    print "Time taken by NMF-CUDA: ", t1-t0
         
